@@ -20,8 +20,6 @@ const DashboardLayout = () => {
 
     const businessMenu = [
         { path: "/business/dashboard", label: "Dashboard" },
-        { path: "/business/create-listing", label: "Create Listing" },
-        { path: "/business/manage-listings", label: "Manage Listings" },
         { path: "/business/messages", label: "Messages" },
         { path: "/business/profile", label: "Profile" },
     ];

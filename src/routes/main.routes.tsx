@@ -14,8 +14,6 @@ import BusinessSetup from "../pages/business-setup";
 import InvestorSetup from "../pages/investor-setup";
 
 import BusinessDashboard from "../pages/business-dashboard";
-import CreateListing from "../pages/create-listing";
-import ManageListings from "../pages/manage-listing";
 import BusinessProfile from "../pages/business-profile";
 import BusinessMessages from "../pages/business-message";
 
@@ -62,8 +60,6 @@ const router = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
             { path: "dashboard", element: <BusinessDashboard /> },
-            { path: "create-listing", element: <CreateListing /> },
-            { path: "manage-listings", element: <ManageListings /> },
             { path: "messages", element: <BusinessMessages /> },
             { path: "profile", element: <BusinessProfile /> },
         ],
