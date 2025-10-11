@@ -24,7 +24,7 @@ const Login = () => {
     };
 
     return (
-        <section className="flex items-center justify-center min-h-screen bg-blue-50 px-6">
+        <section className="flex items-center justify-center min-h-screen px-6">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -123,7 +123,7 @@ const Login = () => {
                 </form>
 
                 <p className="text-center text-sm text-gray-600 mt-6">
-                    Don’t have an account?{" "}
+                    Don't have an account?{" "}
                     <Link
                         to="/signup"
                         className="text-blue-600 font-semibold hover:underline"

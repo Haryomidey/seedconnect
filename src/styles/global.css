@@ -2,12 +2,20 @@
 @import "tailwindcss";
 
 *{
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 @theme {
   --color-primary: #1E3A8A;
   --color-secondary: #2563EB;
   --color-accent: #3B82F6;
+}
+
+a, textarea, input, button, select{
+  outline: none;
+}
+
+button{
+  cursor: pointer;
 }

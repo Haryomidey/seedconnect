@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
     return (
@@ -8,7 +9,9 @@ const Navbar = () => {
                     to="/"
                     className="text-2xl font-extrabold tracking-tight text-primary hover:text-secondary transition-colors"
                 >
-                    SeedConnect
+                    <div className="flex items-center justify-center gap-3">
+                        <img src={logo} alt="SeedConnect" className="h-[40px]" />
+                    </div>
                 </Link>
 
                 <div className="flex items-center space-x-8 text-lg font-medium">

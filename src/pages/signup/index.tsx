@@ -27,7 +27,7 @@ const Signup = () => {
     };
 
     return (
-        <section className="flex items-center justify-center min-h-screen bg-blue-50 px-6">
+        <section className="flex items-center justify-center min-h-screen px-6 py-10">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}

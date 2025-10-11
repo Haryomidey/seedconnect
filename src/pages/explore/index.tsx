@@ -2,52 +2,9 @@ import { motion } from "framer-motion";
 import { Search, Briefcase, Leaf, Shirt, Wrench, Building2 } from "lucide-react";
 import BusinessCard from "../../components/BusinessCard";
 import CallToAction from "../../components/CallToAction";
+import { businesses } from "../../data/businesses";
 
 const Explore = () => {
-    const businesses = [
-        {
-            id: 1,
-            title: "Green Valley Farms",
-            description: "Supplying fresh organic produce to the local market.",
-            fundingGoal: "$3,000",
-            raised: "$1,000",
-        },
-        {
-            id: 2,
-            title: "Urban Threads",
-            description: "Affordable and eco-friendly fashion for young people.",
-            fundingGoal: "$4,500",
-            raised: "$2,200",
-        },
-        {
-            id: 3,
-            title: "TechFix Hub",
-            description: "Helping the community repair and recycle electronics.",
-            fundingGoal: "$2,500",
-            raised: "$800",
-        },
-        {
-            id: 4,
-            title: "SmartEnergy Co.",
-            description: "Bringing renewable energy solutions to rural homes.",
-            fundingGoal: "$6,000",
-            raised: "$3,400",
-        },
-        {
-            id: 5,
-            title: "CraftHouse",
-            description: "Handmade crafts and jewelry from local artisans.",
-            fundingGoal: "$2,000",
-            raised: "$1,100",
-        },
-        {
-            id: 6,
-            title: "FixPro Services",
-            description: "Reliable home and office repair services.",
-            fundingGoal: "$3,500",
-            raised: "$1,500",
-        },
-    ];
 
     const categories = [
         { icon: <Leaf className="w-6 h-6 text-blue-600" />, name: "Agriculture" },
@@ -110,19 +67,22 @@ const Explore = () => {
                     Featured <span className="text-blue-700">Businesses</span>
                 </h2>
                 <div className="grid gap-10 md:grid-cols-3">
-                    {businesses.map((biz, idx) => (
+                    {businesses.map((business, idx) => (
                         <motion.div
-                            key={biz.id}
+                            key={business.id}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.15 }}
                             viewport={{ once: true }}
                         >
                             <BusinessCard
-                                title={biz.title}
-                                description={biz.description}
-                                fundingGoal={biz.fundingGoal}
-                                raised={biz.raised}
+                                id={business.id}
+                                title={business.name}
+                                description={business.shortDescription}
+                                fundingGoal={`$${business.targetAmount.toLocaleString()}`}
+                                raised={`$${business.amountRaised.toLocaleString()}`}
+                                image={business.image}
+                                progress={(business.amountRaised / business.targetAmount) * 100}
                             />
                         </motion.div>
                     ))}
