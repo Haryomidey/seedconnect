@@ -1,25 +1,26 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X, LogOut } from "lucide-react";
 import logo from "../assets/logo.png";
 
-const getUser = () => {
-    const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : { name: "User", role: "business" }; 
-};
-
 const DashboardLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [user, setUser] = useState<{ name: string; role: string }>({ name: "", role: "" });
+    const [role, setRole] = useState<"investor" | "business">("business");
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
-        const currentUser = getUser();
-        setUser(currentUser);
-    }, []);
+        // Automatically detect role based on current route path
+        if (location.pathname.startsWith("/investor")) {
+            setRole("investor");
+        } else {
+            setRole("business");
+        }
+    }, [location.pathname]);
 
     const businessMenu = [
         { path: "/business/dashboard", label: "Dashboard" },
+        { path: "/business/business-detail", label: "Business Info" },
         { path: "/business/messages", label: "Messages" },
         { path: "/business/profile", label: "Profile" },
     ];
@@ -32,17 +33,16 @@ const DashboardLayout = () => {
         { path: "/investor/profile", label: "Profile" },
     ];
 
-    const menuItems = user.role === "investor" ? investorMenu : businessMenu;
+    const menuItems = role === "investor" ? investorMenu : businessMenu;
 
     const handleLogout = () => {
-        localStorage.removeItem("user");
         navigate("/login");
     };
 
     return (
-        <div className="min-h-screen flex bg-gray-50">
+        <div className="h-screen flex bg-gray-50 overflow-y-hidden relative">
             <aside
-                className={`fixed md:static inset-y-0 left-0 w-64 bg-white border-r border-[#d9d9d9] z-20 transform transition-transform duration-300 
+                className={`fixed md:static inset-y-0 left-0 w-64 bg-white border-r border-[#d9d9d9] z-20 transform transition-transform duration-300 h-screen
                 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
             >
                 <div className="flex items-center justify-between p-6 border-b border-[#d9d9d9] h-[70px]">
@@ -86,30 +86,35 @@ const DashboardLayout = () => {
                 </div>
             </aside>
 
+            {sidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black/40 z-10 md:hidden"
+                    onClick={() => setSidebarOpen(false)}
+                ></div>
+            )}
+
             <div className="flex-1 flex flex-col">
                 <header className="flex items-center justify-between bg-white shadow px-6 py-4 h-[70px]">
-                    <button
-                        className="md:hidden text-gray-600"
-                        onClick={() => setSidebarOpen(true)}
-                    >
-                        <Menu size={24} />
-                    </button>
-                    <h1 className="text-lg font-semibold text-gray-800">
-                        {user.role === "investor"
-                            ? "Investor Dashboard"
-                            : "Business Dashboard"}
-                    </h1>
+                    <div className="flex items-center gap-2">
+                        <button
+                            className="md:hidden text-gray-600"
+                            onClick={() => setSidebarOpen(true)}
+                        >
+                            <Menu size={24} />
+                        </button>
+                        <h1 className="text-lg font-semibold text-gray-800">
+                            {role === "investor" ? "Investor Dashboard" : "Business Dashboard"}
+                        </h1>
+                    </div>
                     <div className="flex items-center gap-4">
-                        <span className="text-sm text-gray-600">
-                            Hello, {user.name || "User"}
-                        </span>
+                        <span className="text-sm text-gray-600">Hello, User</span>
                         <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold">
-                            {user.name?.[0]?.toUpperCase() || "U"}
+                            U
                         </div>
                     </div>
                 </header>
 
-                <main className="flex-1">
+                <main className="flex-1 h-[calc(100vh-80px)] overflow-y-scroll">
                     <Outlet />
                 </main>
             </div>

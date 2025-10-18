@@ -23,6 +23,8 @@ import SavedBusinesses from "../pages/investor-saved-business";
 import InvestorProfile from "../pages/investor-profile";
 import InvestorMessages from "../pages/investor-messages";
 import AuthLayout from "../layouts/AuthLayout";
+import BusinessDetailDashboard from "../pages/business-detail-dashboard";
+import InvestorBusinessDetail from "../pages/investor-business-detail";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +63,7 @@ const router = createBrowserRouter([
         children: [
             { path: "dashboard", element: <BusinessDashboard /> },
             { path: "messages", element: <BusinessMessages /> },
+            { path: "business-detail", element: <BusinessDetailDashboard /> },
             { path: "profile", element: <BusinessProfile /> },
         ],
     },
@@ -74,6 +77,7 @@ const router = createBrowserRouter([
             { path: "saved", element: <SavedBusinesses /> },
             { path: "messages", element: <InvestorMessages /> },
             { path: "profile", element: <InvestorProfile /> },
+            { path: "business/:id", element: <InvestorBusinessDetail /> },
         ],
     },
 ]);

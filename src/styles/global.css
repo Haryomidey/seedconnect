@@ -19,3 +19,7 @@ a, textarea, input, button, select{
 button{
   cursor: pointer;
 }
+
+.scrollbar-none::-webkit-scrollbar{
+  display: none;
+}
