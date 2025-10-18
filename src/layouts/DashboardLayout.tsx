@@ -10,7 +10,6 @@ const DashboardLayout = () => {
     const location = useLocation();
 
     useEffect(() => {
-        // Automatically detect role based on current route path
         if (location.pathname.startsWith("/investor")) {
             setRole("investor");
         } else {
@@ -41,6 +40,7 @@ const DashboardLayout = () => {
 
     return (
         <div className="h-screen flex bg-gray-50 overflow-y-hidden relative">
+            <ScrollToTop />
             <aside
                 className={`fixed md:static inset-y-0 left-0 w-64 bg-white border-r border-[#d9d9d9] z-20 transform transition-transform duration-300 h-screen
                 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
@@ -123,3 +123,19 @@ const DashboardLayout = () => {
 };
 
 export default DashboardLayout;
+
+const ScrollToTop = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        const scrollContainer = document.querySelector("main");
+        if (scrollContainer) {
+            scrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [location.pathname]);
+
+    return null;
+};
+

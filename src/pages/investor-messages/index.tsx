@@ -135,7 +135,6 @@ const InvestorMessages = () => {
                         </div>
                     </div>
 
-                    {/* Messages */}
                     <div className="flex-1 overflow-y-auto p-4 bg-gray-50 space-y-3 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
                         {selectedChat.messages.map((msg, i) => (
                             <motion.div
@@ -160,7 +159,6 @@ const InvestorMessages = () => {
                         ))}
                     </div>
 
-                    {/* Input */}
                     <div className="p-4 border-t bg-white flex items-center gap-2">
                         <input
                             type="text"
@@ -183,7 +181,6 @@ const InvestorMessages = () => {
                 </div>
             )}
 
-            {/* Report Modal */}
             {reporting && (
                 <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
                     <motion.div

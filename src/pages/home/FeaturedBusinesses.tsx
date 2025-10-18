@@ -18,15 +18,7 @@ const FeaturedBusinesses = () => {
                         transition={{ delay: index * 0.15 }}
                         viewport={{ once: true }}
                     >
-                        <BusinessCard
-                            id={business.id}
-                            title={business.name}
-                            description={business.shortDescription}
-                            fundingGoal={`$${business.targetAmount.toLocaleString()}`}
-                            raised={`$${business.amountRaised.toLocaleString()}`}
-                            image={business.image}
-                            progress={(business.amountRaised / business.targetAmount) * 100}
-                        />
+                        <BusinessCard business={business} place="home" />
                     </motion.div>
                 ))}
             </div>

@@ -1,4 +1,4 @@
-type Business = {
+export type Business = {
     id: string
     name: string
     shortDescription: string
@@ -26,7 +26,7 @@ export const businesses: Business[] = [
         location: "Lagos, Nigeria",
         founder: "Adebayo Johnson",
         website: "https://ecoharvest.ng",
-        image: "/images/ecoharvest.png",
+        image: "https://logo.clearbit.com/jumia.com",
         createdAt: "2025-09-20",
     },
     {
@@ -41,7 +41,7 @@ export const businesses: Business[] = [
         location: "Nairobi, Kenya",
         founder: "Grace Njoroge",
         website: "https://finlink.africa",
-        image: "/images/finlink.png",
+        image: "https://logo.clearbit.com/paypal.com",
         createdAt: "2025-08-11",
     },
     {
@@ -56,7 +56,7 @@ export const businesses: Business[] = [
         location: "Accra, Ghana",
         founder: "Kwame Mensah",
         website: "https://healthsphere.co",
-        image: "/images/healthsphere.png",
+        image: "https://logo.clearbit.com/ada.com",
         createdAt: "2025-07-15",
     },
     {
@@ -71,7 +71,7 @@ export const businesses: Business[] = [
         location: "Johannesburg, South Africa",
         founder: "Tinashe Moyo",
         website: "https://swiftride.africa",
-        image: "/images/swiftride.png",
+        image: "https://logo.clearbit.com/tesla.com",
         createdAt: "2025-06-10",
     },
     {
@@ -86,7 +86,7 @@ export const businesses: Business[] = [
         location: "Abuja, Nigeria",
         founder: "Chidinma Okeke",
         website: "https://edusmart.io",
-        image: "/images/edusmart.png",
+        image: "https://logo.clearbit.com/khanacademy.org",
         createdAt: "2025-05-22",
     },
     {
@@ -101,7 +101,7 @@ export const businesses: Business[] = [
         location: "Kampala, Uganda",
         founder: "Joseph Mugisha",
         website: "https://aquapure.tech",
-        image: "/images/aquapure.png",
+        image: "https://logo.clearbit.com/nestle.com",
         createdAt: "2025-04-18",
     },
     {
@@ -116,7 +116,7 @@ export const businesses: Business[] = [
         location: "Accra, Ghana",
         founder: "Ama Boateng",
         website: "https://shopease.africa",
-        image: "/images/shopease.png",
+        image: "https://logo.clearbit.com/etsy.com",
         createdAt: "2025-03-02",
     },
     {
@@ -131,7 +131,7 @@ export const businesses: Business[] = [
         location: "Dar es Salaam, Tanzania",
         founder: "Lydia Mwangi",
         website: "https://powerlink.energy",
-        image: "/images/powerlink.png",
+        image: "https://logo.clearbit.com/plugpower.com",
         createdAt: "2025-02-14",
     },
 ]

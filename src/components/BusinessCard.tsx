@@ -1,48 +1,76 @@
-import { Link } from "react-router-dom";
-import DummyImage from '../assets/dummy.png'
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import type { Business } from "../data/businesses";
 
-type Props = {
-    id: string
-    title: string
-    description: string
-    fundingGoal: string
-    raised: string
-    image?: string
-    progress: number
+interface BusinessCardProps {
+    business: Business;
+    place?: 'home' | 'not-home'
 }
 
-const BusinessCard = ({ id, title, description, fundingGoal, raised, image, progress }: Props) => {
+const BusinessCard = ({ business, place='not-home' }: BusinessCardProps) => {
+    const navigate = useNavigate();
+    const fallbackImage = "https://via.placeholder.com/150?text=No+Image";
+    const progress =
+        (business.amountRaised / business.targetAmount) * 100 || 0;
+
     return (
-        <Link to={`/business/${id}`}>
-            <div className="bg-white shadow-md rounded-2xl p-6 hover:shadow-xl transition transform hover:-translate-y-1">
-                {image && (
-                    <img
-                        src={DummyImage}
-                        alt={title}
-                        className="w-full h-48 object-cover rounded-xl mb-4"
-                    />
-                )}
-                <h3 className="text-xl font-bold text-blue-700 mb-2">{title}</h3>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">{description}</p>
+        <motion.div
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 200 }}
+            onClick={() => {
+                place === 'home' ? navigate(`/business/${business.id}`) : navigate(`/investor/business/${business.id}`);
+            }}
+            className="cursor-pointer bg-white rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 overflow-hidden"
+        >
+            <div className="h-40 bg-gray-50 flex items-center justify-center">
+                <img
+                    src={business.image || fallbackImage}
+                    alt={business.name}
+                    className="w-20 h-20 object-contain"
+                />
+            </div>
 
-                <div className="w-full bg-gray-200 h-2 rounded-full mb-3">
-                    <div
-                        className="h-2 rounded-full bg-blue-600"
-                        style={{ width: `${progress}%` }}
-                    ></div>
+            <div className="p-5">
+                <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-semibold text-gray-800 truncate">
+                        {business.name}
+                    </h3>
                 </div>
 
-                <div className="flex justify-between items-center text-sm text-gray-700 mb-3">
-                    <span>Goal: {fundingGoal}</span>
-                    <span>Raised: {raised}</span>
+                <p className="text-sm text-blue-700 font-medium mb-2">
+                    {business.industry}
+                </p>
+
+                <p className="text-sm text-gray-600 line-clamp-2 mb-4">
+                    {business.shortDescription}
+                </p>
+
+                <div className="mb-4">
+                    <div className="flex justify-between text-xs text-gray-500 mb-1">
+                        <span>Raised: ${business.amountRaised.toLocaleString()}</span>
+                        <span>Goal: ${business.targetAmount.toLocaleString()}</span>
+                    </div>
+                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                        <div
+                            className="bg-blue-700 h-2 rounded-full"
+                            style={{ width: `${progress}%` }}
+                        ></div>
+                    </div>
                 </div>
 
-                <button className="mt-2 w-full bg-blue-700 text-white py-2 rounded-lg hover:bg-blue-800 transition">
-                    See business
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        place === 'home' ? navigate(`/business/${business.id}`) : navigate(`/investor/business/${business.id}`);
+                    }}
+                    className="flex items-center gap-1 text-sm font-medium text-blue-700 hover:underline"
+                >
+                    View Details <ArrowRight className="w-4 h-4" />
                 </button>
             </div>
-        </Link>
-    )
-}
+        </motion.div>
+    );
+};
 
 export default BusinessCard;

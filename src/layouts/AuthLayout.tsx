@@ -2,10 +2,12 @@ import { motion } from "framer-motion";
 import { Outlet } from "react-router-dom";
 import logo from "../assets/logo-white.png";
 import AuthImage from "../assets/auth-white.png";
+import ScrollToTop from "../components/ScrollToTop";
 
 const AuthLayout = () => {
     return (
-        <div className="min-h-screen flex flex-col md:flex-row">
+        <div className="h-screen flex flex-col md:flex-row overflow-y-hidden">
+            <ScrollToTop />
             <div className="hidden md:flex flex-col justify-between w-1/2 bg-blue-600 text-white p-12 relative">
                 <div>
                     <div className="">
@@ -26,9 +28,9 @@ const AuthLayout = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex-1 flex items-center justify-center bg-gray-50 p-6"
+                className="flex-1 flex items-center justify-center bg-gray-50 p-"
             >
-                <div className="w-full max-w-md">
+                <div className="w-full max-w-md overflow-y-scroll h-full scrollbar-none">
                     <Outlet />
                 </div>
             </motion.div>
