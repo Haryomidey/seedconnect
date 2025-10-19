@@ -35,7 +35,7 @@ const BusinessProfile = () => {
         joinDate: "2024-07-15",
         profileImage: "https://i.pravatar.cc/150?img=12",
         totalRaised: 75000,
-        totalBusinesses: 2,
+        totalBusinesses: 1,
         businesses: [
             {
                 id: "b1",
@@ -45,20 +45,19 @@ const BusinessProfile = () => {
                 targetAmount: 200000,
                 image: "https://logo.clearbit.com/jumia.com",
             },
-            {
-                id: "b2",
-                name: "AgriLink",
-                shortDescription: "Digital marketplace connecting farmers and buyers.",
-                amountRaised: 25000,
-                targetAmount: 100000,
-                image: "https://logo.clearbit.com/paystack.com",
-            },
+            // {
+            //     id: "b2",
+            //     name: "AgriLink",
+            //     shortDescription: "Digital marketplace connecting farmers and buyers.",
+            //     amountRaised: 25000,
+            //     targetAmount: 100000,
+            //     image: "https://logo.clearbit.com/paystack.com",
+            // },
         ],
     };
 
     return (
         <div className="bg-white text-gray-900">
-            {/* HERO SECTION */}
             <section className="bg-gray-50 py-20 px-6 text-center flex items-center min-h-[450px]">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
@@ -102,7 +101,6 @@ const BusinessProfile = () => {
                 </motion.div>
             </section>
 
-            {/* STATS SECTION */}
             <section className="max-w-5xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-6 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -145,9 +143,8 @@ const BusinessProfile = () => {
                 </motion.div>
             </section>
 
-            {/* BUSINESSES SECTION */}
             <section className="max-w-6xl mx-auto px-6 py-16">
-                <h2 className="text-2xl font-bold mb-8 text-gray-900">My Businesses</h2>
+                <h2 className="text-2xl font-bold mb-8 text-gray-900">My Business</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {user.businesses.map((biz) => {
                         const progress = Math.min(
