@@ -75,40 +75,9 @@ const Explore = () => {
                             transition={{ delay: idx * 0.15 }}
                             viewport={{ once: true }}
                         >
-                            <BusinessCard
-                                id={business.id}
-                                title={business.name}
-                                description={business.shortDescription}
-                                fundingGoal={`$${business.targetAmount.toLocaleString()}`}
-                                raised={`$${business.amountRaised.toLocaleString()}`}
-                                image={business.image}
-                                progress={(business.amountRaised / business.targetAmount) * 100}
-                            />
+                            <BusinessCard business={business} />
                         </motion.div>
                     ))}
-                </div>
-            </section>
-
-            <section className="bg-gray-50 py-20 px-6">
-                <div className="max-w-5xl mx-auto text-center">
-                    <motion.h3
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        viewport={{ once: true }}
-                        className="text-3xl font-bold mb-4"
-                    >
-                        Ready to <span className="text-blue-700">Join the Movement?</span>
-                    </motion.h3>
-                    <p className="text-gray-600 mb-8">
-                        Whether you're looking to invest or seeking funding, SeedConnect helps you take the next big step.
-                    </p>
-                    <a
-                        href="/signup"
-                        className="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all"
-                    >
-                        Get Started
-                    </a>
                 </div>
             </section>
 

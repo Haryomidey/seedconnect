@@ -12,6 +12,7 @@ import WhyChooseUs from "./WhyChooseUs";
 import HowItWorks from "./HowItWorks";
 import FeaturedBusinesses from "./FeaturedBusinesses";
 import Testimonials from "./Testimonials";
+import { FaRocket } from "react-icons/fa";
 
 const Home = () => {
     return (
@@ -60,11 +61,11 @@ const Home = () => {
             </section>
 
             <Testimonials />
+            <Faqs />
+            <CallToAction />
 
-           <Faqs />
-
-            <section className="bg-gray-50 py-24 px-6 text-center">
-                <h2 className="text-4xl font-bold mb-4">Stay Updated 🚀</h2>
+            <section className="bg-gray-200 py-24 px-6 text-center">
+                <h2 className="w-fit mx-auto text-4xl font-bold mb-4 flex items-center justify-center gap-2">Stay Updated <FaRocket className='text-accent' /></h2>
                 <p className="text-gray-600 mb-8">
                     Subscribe to get the latest businesses, news, and updates.
                 </p>
@@ -75,7 +76,7 @@ const Home = () => {
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none"
+                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 outline-none text-black"
                         />
                     </div>
                     <button className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all">
@@ -83,8 +84,6 @@ const Home = () => {
                     </button>
                 </form>
             </section>
-
-            <CallToAction />
         </div>
     );
 };
