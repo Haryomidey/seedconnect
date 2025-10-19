@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { businesses } from "../../data/businesses"
 import {
@@ -9,14 +9,19 @@ import {
     Target,
     TrendingUp,
     CalendarDays,
-    CircleDollarSign,
     Users,
+    MessageCircle,
 } from "lucide-react";
-import DummyImage from '../../assets/dummy.png';
 
 const BusinessDetail = () => {
     const { id } = useParams()
-    const business = businesses.find((b) => b.id === id)
+    const business = businesses.find((b) => b.id === id);
+
+    const navigate = useNavigate();
+
+    const handleChat = () => {
+        navigate(`/investor/messages`)
+    }
 
     if (!business) {
         return (
@@ -51,7 +56,7 @@ const BusinessDetail = () => {
                     className="flex-shrink-0 w-full lg:w-1/2"
                 >
                     <img
-                        src={DummyImage}
+                        src={business.image}
                         alt={business.name}
                         className="w-full h-[380px] object-cover rounded-3xl shadow-xl"
                     />
@@ -91,9 +96,11 @@ const BusinessDetail = () => {
                         </div>
                     </div>
 
-                    <button className="w-full py-4 bg-blue-700 hover:bg-blue-800 text-white text-lg rounded-2xl shadow-md transition flex items-center justify-center gap-2">
-                        <CircleDollarSign className="w-5 h-5" />
-                        Support This Business
+                    <button className="w-full py-4 bg-blue-700 hover:bg-blue-800 text-white text-lg rounded-2xl shadow-md transition flex items-center justify-center gap-2"
+                        onClick={handleChat}
+                    >
+                        <MessageCircle className="w-5 h-5" />
+                        Chat Business owner
                     </button>
                 </div>
             </div>
